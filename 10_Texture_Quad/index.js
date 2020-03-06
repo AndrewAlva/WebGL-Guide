@@ -155,7 +155,7 @@ function initTextures(webglCanvasContext, n_vertices) {
 	}
 
 	// Tell the browser to load an image
-	image.src = 'img/sky.jpg';
+	image.src = 'img/texture_1024.jpg';
 	// Event handler to be called after loading the image through an anonymous function
 	image.onload = function() {
 		loadTexture(webglCanvasContext, n_vertices, texture, u_Sampler, image);
@@ -176,7 +176,7 @@ function loadTexture(webglCanvasContext, n_vertices, textureObj, fragmentTexVar,
 	webglCanvasContext.bindTexture(webglCanvasContext.TEXTURE_2D, textureObj);
 
 	// Set texture parameters
-	webglCanvasContext.texParameteri(webglCanvasContext.TEXTURE_2D, webglCanvasContext.TEXTURE_MAG_FILTER, webglCanvasContext.LINEAR);
+	webglCanvasContext.texParameteri(webglCanvasContext.TEXTURE_2D, webglCanvasContext.TEXTURE_MIN_FILTER, webglCanvasContext.LINEAR);
 	// Set texture image
 	webglCanvasContext.texImage2D(webglCanvasContext.TEXTURE_2D, 0, webglCanvasContext.RGB, webglCanvasContext.RGB, webglCanvasContext.UNSIGNED_BYTE, imageLoaded);
 
