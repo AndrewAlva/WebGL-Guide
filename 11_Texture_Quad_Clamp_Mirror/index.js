@@ -1,4 +1,4 @@
-console.log('Morning 10. Texture Quad');
+console.log('Morning 11. Textured Quad Clamp Mirror');
 
 
 // Imported WebGLUtils library from the book
@@ -79,10 +79,10 @@ function main() {
 function initVertexBuffers(webglCanvasContext) {
 	// Specify the vertices in a "Typed Array" format, in this case an array for floating numbers
 	var _verticesTexCoords = new Float32Array([
-		-0.5,	0.5,	0.0, 1.0,
-		0.5,	0.5,	1.0, 1.0,
-		0.5,	-0.5,	1.0, 0.0,
-		-0.5,	-0.5,	0.0, 0.0
+		-0.5,	0.5,	-0.2, 1.1,
+		0.5,	0.5,	1.1, 1.1,
+		0.5,	-0.5,	1.1, -0.2,
+		-0.5,	-0.5,	-0.2, -0.2
 	]);
 	var n_verticesTexCoords = 4; // Amount of vertices considered to pass into vertex shader
 	
@@ -177,6 +177,13 @@ function loadTexture(webglCanvasContext, n_vertices, textureObj, fragmentTexVar,
 
 	// Set texture parameters
 	webglCanvasContext.texParameteri(webglCanvasContext.TEXTURE_2D, webglCanvasContext.TEXTURE_MIN_FILTER, webglCanvasContext.LINEAR);
+
+	// Define clamping to fill empty spaces
+	// TEXTURE_WRAP_S refers to 'x' axis
+	webglCanvasContext.texParameteri(webglCanvasContext.TEXTURE_2D, webglCanvasContext.TEXTURE_WRAP_S, webglCanvasContext.CLAMP_TO_EDGE);
+	// TEXTURE_WRAP_T refers to 'y' axis
+	webglCanvasContext.texParameteri(webglCanvasContext.TEXTURE_2D, webglCanvasContext.TEXTURE_WRAP_T, webglCanvasContext.MIRRORED_REPEAT);
+
 	// Set texture image
 	webglCanvasContext.texImage2D(webglCanvasContext.TEXTURE_2D, 0, webglCanvasContext.RGB, webglCanvasContext.RGB, webglCanvasContext.UNSIGNED_BYTE, imageLoaded);
 

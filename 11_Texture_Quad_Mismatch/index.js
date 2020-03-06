@@ -1,4 +1,4 @@
-console.log('Morning 10. Texture Quad');
+console.log('Morning 11. Texture Quad Mismatch');
 
 
 // Imported WebGLUtils library from the book
@@ -80,8 +80,8 @@ function initVertexBuffers(webglCanvasContext) {
 	// Specify the vertices in a "Typed Array" format, in this case an array for floating numbers
 	var _verticesTexCoords = new Float32Array([
 		-0.5,	0.5,	0.0, 1.0,
-		0.5,	0.5,	1.0, 1.0,
-		0.5,	-0.5,	1.0, 0.0,
+		0.5,	0.5,	0.28, -1.2,
+		0.5,	-0.5,	0.8, -1.0,
 		-0.5,	-0.5,	0.0, 0.0
 	]);
 	var n_verticesTexCoords = 4; // Amount of vertices considered to pass into vertex shader
